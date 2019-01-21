@@ -27,15 +27,17 @@
     var filterFieldInputedValue = filterField.value.toLowerCase();
     tableRowsArray = tableBody.querySelectorAll('tr');
     totalAmountOfRows = tableRowsArray.length;
-    var filtredTableRowsArray = []; 
+    var filtredTableRowsArray = [];
+    var counter = 1;
     tableRowsArray.forEach(function(item) {
       item.removeAttribute('data-filter');
       item.classList.add('non-visible');
       var countryName = item.querySelector('.country').innerHTML.toLowerCase();
       if (countryName.indexOf(filterFieldInputedValue) !== -1) {        
         item.dataset.filter = true;
-        item.classList.remove('non-visible');
-        filtredTableRowsArray.push(item);
+        item.classList.remove('non-visible');        
+        item.children[0].innerHTML = counter++;
+        filtredTableRowsArray.push(item);        
       }
     });
     tableRowsArray = filtredTableRowsArray;
@@ -47,6 +49,7 @@
     if (rowsPerPageFieldInputedValue < 1) {
       return;
     }
+    console.dir(tableRowsArray);
     tableRowsArray.forEach(function(item, i) {
       item.classList.add('non-visible');
       var countryName = item.querySelector('.country').innerHTML.toLowerCase();
@@ -56,6 +59,7 @@
         positions[i].innerText = i + 1;
       }
     });
+    console.dir(tableRowsArray);
   }
 
   function showPageInformation (rowsPerPageFieldInputedValue) {
