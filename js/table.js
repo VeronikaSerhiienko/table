@@ -160,12 +160,14 @@
     }
     pageNumberListItem = pageControls.querySelectorAll('.js-page-number-list-item');
     removeDots();
-    if (currentPage > 4) {
-      insertDots(pageNumberListItem[1]);
+    if (amountOfPages > 6) {
+      if (currentPage >= 4) {
+        insertDots(pageNumberListItem[1]);
+      }
+      if (currentPage <= amountOfPages - 3) {   
+        insertDots(pageNumberListItem[amountOfPages - 2]);
+      }
     }
-    if (currentPage < amountOfPages - 3) {   
-      insertDots(pageNumberListItem[amountOfPages - 2]);
-    }    
     setOrRemoveHrefAttribute();
   }
 
