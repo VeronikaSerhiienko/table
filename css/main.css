@@ -1,0 +1,384 @@
+* {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+p,
+ul,
+button {
+  margin: 0;
+  padding: 0;
+}
+
+.modal-window-wrapper {
+  display: none;
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 25, 25, 0.8);
+  cursor: pointer;
+}
+
+.modal-window {
+  position: fixed;
+  display: none;
+  padding: 20px;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  width: 500px;
+  height: 500px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: #fff;
+  transition: .64s ease-in-out;
+  box-shadow: 9px 7px 13px 0 rgba(0, 0, 0, 0.75);
+}
+
+.modal-window__button-open {
+  position: fixed;
+  top: 20px;
+  right: 15px;
+}
+
+.modal-window__button-close {
+  position: absolute;
+  right: -15px;
+  top: -15px;
+  width: 45px;
+  height: 45px;
+  font-size: 15px;
+  border: 0;
+  font-weight: 300;
+  border-radius: 100%;
+  background-color: #0A0A0A;
+  z-index: 4;
+  color: #fff;
+  line-height: 45px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.modal-window__button-close:hover {
+  box-shadow: 0 0 11px 2px cyan;
+  color: cyan;
+}
+
+.visible {
+  display: block;
+}
+
+.slider {
+  margin: 0 auto;
+  position: relative;
+  width: 470px;
+  padding: 10px 40px;
+  border: 1px solid #CCC;
+  border-radius: 15px;
+  background: #eee;
+}
+
+.slider img {
+  width: 130px;
+  height: 130px;
+  display: block;
+}
+
+.arrow {
+  position: absolute;
+  top: 60px;
+  padding: 0;
+  background: #ddd;
+  border-radius: 15px;
+  border: 1px solid gray;
+  font-size: 24px;
+  line-height: 24px;
+  color: #444;
+  display: block;
+}
+
+.arrow:focus {
+  outline: none;
+}
+
+.arrow:hover {
+  background: #ccc;
+  cursor: pointer;
+}
+
+.previous {
+  left: 7px;
+}
+
+.next {
+  right: 7px;
+}
+
+.image-gallery {
+  width: 390px;
+  overflow: hidden;
+}
+
+.image-gallery ul {
+  height: 130px;
+  width: 9999px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: margin-left 250ms;
+  font-size: 0;
+}
+
+.image-gallery li {
+  display: inline-block;
+}
+
+.tabs-module {
+  padding: 30px 0;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.tabs-module__list {
+  display: flex;
+}
+
+.tabs-module__list-button {
+  z-index: 1;
+  position: relative;
+  list-style-type: none;
+  text-transform: uppercase;
+  padding: 10px;
+  color: #00e5e5;
+  text-align: center;
+  border-radius: 5px 5px 0 0;
+  background-color: white;
+  border: 1px dashed transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.tabs-module__list-button:hover {
+  border-color: cyan;
+  color: black;
+  border-bottom: 1px dashed transparent;
+}
+
+.tabs-module__list-button--active {
+  border-color: cyan;
+  color: black;
+  border-bottom: 1px dashed transparent;
+}
+
+.tabs-module__list-button--active:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: white;
+}
+
+.tabs-module__text-block {
+  display: none;
+  position: relative;
+  top: -0.5px;
+  padding: 15px;
+  animation: fadeEffect 1s;
+  border-top: 1px dashed cyan;
+  box-shadow: 0 9px 7px 1px rgba(0, 0, 0, 0.75);
+  text-align: justify;
+}
+
+.tabs-module__text-block--active {
+  display: block;
+}
+
+@keyframes fadeEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.aside-menu {
+  position: fixed;
+  width: 200px;
+  left: -100%;
+  top: 86px;
+  transition: 0.5s;
+  background-color: rgba(0, 25, 25, 0.8);
+  z-index: 2;
+}
+
+.aside-menu__list {
+  padding: 35px 10px;
+}
+
+.aside-menu__list-item {
+  list-style-type: none;
+  padding: 20px 0;
+}
+
+.aside-menu__link {
+  text-decoration: none;
+  position: relative;
+  text-transform: uppercase;
+  display: block;
+  text-align: center;
+  color: green;
+  font-size: 30px;
+  transition: 0.5s;
+}
+
+.aside-menu__link::after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: green;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.aside-menu__link:hover::after {
+  opacity: 1;
+  transform: translateY(60px);
+}
+
+.aside-menu__button {
+  display: block;
+  position: fixed;
+  top: 20px;
+  left: 15px;
+  border: 0;
+  width: 50px;
+  height: 50px;
+  background-color: black;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px 0px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+  transition: 1s;
+}
+
+.aside-menu__button:hover {
+  box-shadow: 0 0 11px 2px cyan;
+}
+
+.aside-menu__button:hover .aside-menu__button-line,
+.aside-menu__button:hover .aside-menu__button-line:after,
+.aside-menu__button:hover .aside-menu__button-line:before {
+  background-color: cyan;
+}
+
+.aside-menu__button:focus {
+  outline: 0;
+}
+
+.aside-menu__button-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -1px;
+  margin-left: -10px;
+  width: 20px;
+  height: 2px;
+  background-color: white;
+  transition: 0.2s;
+}
+
+.aside-menu__button-line::before {
+  content: '';
+  display: block;
+  position: absolute;
+  transform: translateY(-5px);
+  top: 50%;
+  left: 50%;
+  margin-top: -1px;
+  margin-left: -10px;
+  width: 20px;
+  height: 2px;
+  background-color: white;
+  transition: 0.2s;
+}
+
+.aside-menu__button-line::after {
+  content: '';
+  display: block;
+  position: absolute;
+  transform: translateY(5px);
+  top: 50%;
+  left: 50%;
+  margin-top: -1px;
+  margin-left: -10px;
+  width: 20px;
+  height: 2px;
+  background-color: white;
+  transition: 0.2s;
+}
+
+.aside-menu__button-active .aside-menu__button-line::before {
+  transform: rotate(-35deg);
+  width: 10px;
+  transform-origin: left bottom;
+}
+
+.aside-menu__button-active .aside-menu__button-line::after {
+  transform: rotate(35deg);
+  width: 10px;
+  transform-origin: left top;
+}
+
+.image-block {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.image-block__images {
+  box-shadow: 9px 7px 13px 0 rgba(0, 0, 0, 0.75);
+  border-radius: 20px;
+}
+
+.button-open {
+  background-color: transparent;
+  border-radius: 6px;
+  text-transform: uppercase;
+  padding: 10px 15px;
+  border: 5px dashed cyan;
+  color: cyan;
+  font-size: 20px;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.75);
+  background-image: linear-gradient(#00e5e5, #00e5e5);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  transition: background-size 0.5s;
+  cursor: pointer;
+}
+
+.button-open:hover {
+  background-size: 100% 100%;
+  color: green;
+  border-style: inset;
+}
+
+.table-page {
+  display: block;
+  text-align: center;
+}
+
+.table-page__button-open {
+  display: inline-block;
+  margin-top: 30px;
+}
