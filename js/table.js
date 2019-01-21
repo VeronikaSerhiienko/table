@@ -28,19 +28,17 @@
     tableRowsArray = tableBody.querySelectorAll('tr');
     totalAmountOfRows = tableRowsArray.length;
     var filtredTableRowsArray = [];
-    var counter = 1;
     tableRowsArray.forEach(function(item) {
       item.removeAttribute('data-filter');
       item.classList.add('non-visible');
       var countryName = item.querySelector('.country').innerHTML.toLowerCase();
       if (countryName.indexOf(filterFieldInputedValue) !== -1) {        
         item.dataset.filter = true;
-        item.classList.remove('non-visible');        
-        item.children[0].innerHTML = counter++;
+        item.classList.remove('non-visible');
         filtredTableRowsArray.push(item);        
       }
     });
-    tableRowsArray = filtredTableRowsArray;
+    tableRowsArray = filtredTableRowsArray;   
     totalAmountOfRows = filtredTableRowsArray.length;
     showRowsPerPage();
   }
@@ -49,7 +47,6 @@
     if (rowsPerPageFieldInputedValue < 1) {
       return;
     }
-    console.dir(tableRowsArray);
     tableRowsArray.forEach(function(item, i) {
       item.classList.add('non-visible');
       var countryName = item.querySelector('.country').innerHTML.toLowerCase();
@@ -59,7 +56,6 @@
         positions[i].innerText = i + 1;
       }
     });
-    console.dir(tableRowsArray);
   }
 
   function showPageInformation (rowsPerPageFieldInputedValue) {
@@ -74,11 +70,9 @@
   function setOrRemoveHrefAttribute() {
     previousPage.removeAttribute('href', '#');
     nextPage.removeAttribute('href', '#');
-
     if (currentPage !== 1) {
       previousPage.setAttribute('href', '#');
     }
-
     if (currentPage !== amountOfPages) {
       nextPage.setAttribute('href', '#');
     }
@@ -166,10 +160,10 @@
     }
     pageNumberListItem = pageControls.querySelectorAll('.js-page-number-list-item');
     removeDots();
-    if (currentPage >= 4) {
+    if (currentPage > 4) {
       insertDots(pageNumberListItem[1]);
     }
-    if (currentPage <= amountOfPages - 3) {   
+    if (currentPage < amountOfPages - 3) {   
       insertDots(pageNumberListItem[amountOfPages - 2]);
     }    
     setOrRemoveHrefAttribute();
