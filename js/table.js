@@ -124,7 +124,7 @@
       tableRowsArray.forEach(function(item) {
         item.classList.remove('non-visible');
       });
-      rowsPerPageField.value = '150';
+      rowsPerPageFieldInputedValue = 150;
     }   
     
     drawPage(rowsPerPageFieldInputedValue);
@@ -138,8 +138,8 @@
     }
     rowsPerPageFieldInputedValue = rowsPerPageField.value;
     if (rowsPerPageFieldInputedValue < 1) {
-      return;
-    }  
+      rowsPerPageFieldInputedValue = 150;
+    }    
     amountOfPages = Math.ceil(totalAmountOfRows / rowsPerPageFieldInputedValue);   
     for (var i = 1; i <= amountOfPages; i++) {      
       var pageNumber = document.createElement('li');
